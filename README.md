@@ -40,7 +40,7 @@ conda activate CryoTransformer
 
 ## Training Data Statistics
 
-| SN | EMPIAR ID | Type of Protein         | Image Size   | Total Structure Weight (kDa) | Training Micrographs | Validation Micrographs | Test Micrographs | Total Micrographs |
+| SN | EMPIAR ID | Type of Protein         | Image Size   | Total Structure Weight (kDa) | Training Micrographs | Validation Micrographs | Test Micrographs | # of  Micrographs |
 | -- | --------- | ----------------------- | ------------ | ---------------------------- | -------------------- | ---------------------- | ---------------- | ----------------- |
 | 1  | 11183​    | Signaling Protein       | (5760, 4092) | 139.36                       | 250                  | 25                     | 25               | 300               |
 | 2  | 11057​    | Hydrolase               | (5760, 4092) | 149.43                       | 250                  | 25                     | 20               | 295               |
@@ -71,7 +71,7 @@ conda activate CryoTransformer
 ## Test Data Statistics
 Data statistics used for independent Testing sourced from EMPIAR repository
 
-| SN | EMPIAR ID         | Type of Protein   | Source Organism                | Image Size   | Total Structure Weight (kDa) | Number of Micrographs |
+| SN | EMPIAR ID         | Type of Protein   | Source Organism                | Micrograph Size   | Total Structure Weight (kDa) | # of Micrographs |
 | -- | ----------------- | ----------------- | ------------------------------ | ------------ | ---------------------------- | --------------------- |
 | 1  | 10081             | Transport Protein | Homo sapiens                   | (3710, 3838) | 298.57                       | 997                   |
 | 2  | 10532             | Viral Protein     | Influenza A virus subtype H3N2 | (4096, 4096) | 191.76                       | 1,556                 |
@@ -82,15 +82,15 @@ Data statistics used for independent Testing sourced from EMPIAR repository
 
 Data statistics used for independent Testing sourced from CryoPPP dataset (* Theoretical weight)
 
-| SN | EMPIAR ID         | Type of Protein   | Source Organism                | Image Size   | Total Structure Weight (kDa) | Number of Micrographs |
-| -- | ----------------- | ----------------- | ------------------------------ | ------------ | ---------------------------- | --------------------- |
-| 1  | 10017             | β -galactosidase  |                                | (4096, 4096) | 450\*                        | 84                    |
-| 2  | 10081             | Transport Protein | Homo sapiens                   | (3710, 3838) | 298.57                       | 300                   |
-| 3  | 10093             | Membrane Protein  | Drosophila melanogaster        | (3838, 3710) | 779.4                        | 295                   |
-| 4  | 10345             | Signaling Protein | Mus musculus                   | (3838, 3710) | 244.68                       | 295                   |
-| 5  | 10532             | Viral Protein     | Influenza A virus subtype H3N2 | (4096, 4096) | 191.76                       | 300                   |
-| 6  | 11056             | Transport Protein | Mus musculus                   | (5760, 4092) | 88.94                        | 305                   |
-|    | Total Micrographs |                   |                                |              |                              | 1,579                 |
+| SN | EMPIAR ID | Type of Protein   | Source Organism                | Micrograph Size | Total Structure Weight (kDa) | # of Micrographs |
+| -- | --------- | ----------------- | ------------------------------ | --------------- | ---------------------------- | --------------------- |
+| 1  | 10017     | β -galactosidase  | Escherichia coli K-12          | (4096, 4096)    | 450\*                        | 84                    |
+| 2  | 10081     | Transport Protein | Homo sapiens                   | (3710, 3838)    | 298.57                       | 300                   |
+| 3  | 10093     | Membrane Protein  | Drosophila melanogaster        | (3838, 3710)    | 779.4                        | 295                   |
+| 4  | 10345     | Signaling Protein | Mus musculus                   | (3838, 3710)    | 244.68                       | 295                   |
+| 5  | 10532     | Viral Protein     | Influenza A virus subtype H3N2 | (4096, 4096)    | 191.76                       | 300                   |
+| 6  | 11056     | Transport Protein | Mus musculus                   | (5760, 4092)    | 88.94                        | 305                   |
+|    |           | Total Micrographs |                                |                 |                              | 1,579                 |
 
 
 ## Training and Reproducing Results (if required)
