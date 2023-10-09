@@ -38,6 +38,32 @@ conda env create -f environment.yml
 conda activate CryoTransformer
 ```
 
+
+
+## Training and Reproducing Results (if required)
+
+```
+python train.py
+```
+```
+Optional Arguments:
+TODO
+
+Example Usage:
+    python train.py --TODO
+```
+## Prediction
+
+#### Prediction on Test Data 
+This code generates the predicted proteins encircled in Micrographs along with the .box and .star files. 
+```
+python predict.py TODO
+```
+```
+Optional Arguments:
+TODo
+```
+
 ## Training Data Statistics
 
 Data statistics for Training, validating, and Testing CryoTransformer (* Theoretical weight)
@@ -96,31 +122,6 @@ Data statistics used for independent Testing sourced from CryoPPP dataset (* The
 |    |           | Total Micrographs |                 |                              | 1,579                 |
 
 
-## Training and Reproducing Results (if required)
-
-```
-python train.py
-```
-```
-Optional Arguments:
-TODO
-
-Example Usage:
-    python train.py --TODO
-```
-## Prediction
-
-#### Prediction on Test Data 
-This code generates the predicted proteins encircled in Micrographs along with the .box and .star files. 
-```
-python predict.py TODO
-```
-```
-Optional Arguments:
-TODo
-```
-
-
 ## Rights and Permissions
 Open Access \
 This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons license, and indicate if changes were made. The images or other third party material in this article are included in the article’s Creative Commons license, unless indicated otherwise in a credit line to the material. If material is not included in the article’s Creative Commons license and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.
@@ -135,13 +136,14 @@ TO Update
 
 
 ## Dataset
-If you use the code or data associated with this research work or otherwise find this data useful, please cite:
-@article {Dhakal2023,
-author = {Dhakal, Ashwin and Gyawali, Rajan and Wang, Liguo and Cheng, Jianlin},
-title = {A large expert-curated cryo-EM image dataset for machine learning protein particle picking},
-year = {2023},
-volume = {10},
-issue = {1},
-doi = {10.1038/s41597-023-02280-2},
-journal = {Scientific Data},
-url = { https://doi.org/10.1038/s41597-023-02280-2 } }
+If you use the code or data associated with this research work or otherwise find this data useful, please cite: \
+@article {Dhakal2023, \
+	author = {Dhakal, Ashwin and Gyawali, Rajan and Wang, Liguo and Cheng, Jianlin}, \
+	title = {A large expert-curated cryo-EM image dataset for machine learning protein particle picking}, \
+	year = {2023}, \
+    volume = {10}, \
+    issue = {1}, \
+	doi = {10.1038/s41597-023-02280-2}, \
+	journal = {Scientific Data}, \
+    url = { https://doi.org/10.1038/s41597-023-02280-2 }
+}
