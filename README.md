@@ -11,6 +11,18 @@ CryoTransformer is a powerful and accurate particle-picking framework using Resi
 
 ![Alt text](<visuals/github_figure_720.mp4>)
 
+
+420
+https://github.com/jianlin-cheng/CryoSegNet/assets/24986485/ca4046e4-9df3-4536-89ad-6f1c2b35b43e
+
+720
+https://github.com/jianlin-cheng/CryoSegNet/assets/24986485/02e2f588-4a59-4736-bafc-ec87196cb565
+
+
+
+
+
+
 ## Installation
 
 #### Clone project
