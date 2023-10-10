@@ -109,25 +109,25 @@ Data statistics for Training, validating, and Testing CryoTransformer (* Theoret
 ## Independent Test Data Statistics
 Data statistics used for independent Testing sourced from EMPIAR repository
 
-| SN | EMPIAR ID | Type of Protein   | Micrograph Size   | Total Str. Weight (kDa) | Number of Micrographs |
-| -- | --------- | ----------------- | ------------ | ---------------------------- | --------------------- |
-| 1  | 10081     | Transport Protein | (3710, 3838) | 298.57                       | 997                   |
-| 2  | 10532     | Viral Protein     | (4096, 4096) | 191.76                       | 1,556                 |
-| 3  | 10093     | Membrane Protein  | (3838, 3710) | 779.4                        | 1,873                 |
-| 4  | 10345     | Signaling Protein | (3838, 3710) | 244.68                       | 1,644                 |
-|    |           | Total Micrographs |              |                              | 6,070                 |
+| SN | EMPIAR ID | Type of Protein      | Micrograph Size   | Total Str. Weight (kDa) | Number of Micrographs |
+| -- | --------- | -----------------    | ------------ | ---------------------------- | --------------------- |
+| 1  | 10081     | Transport Protein    | (3710, 3838) | 298.57                       | 997                   |
+| 2  | 10532     | Viral Protein        | (4096, 4096) | 191.76                       | 1,556                 |
+| 3  | 10093     | Membrane Protein     | (3838, 3710) | 779.4                        | 1,873                 |
+| 4  | 10345     | Signaling Protein    | (3838, 3710) | 244.68                       | 1,644                 |
+|    |           | Total Micrographs    |              |                              | 6,070                 |
 
 Data statistics used for independent Testing sourced from CryoPPP dataset (* Theoretical weight)
 
-| SN | EMPIAR ID | Type of Protein   | Micrograph Size | Total Str. Weight (kDa) | Number of Micrographs |
-| -- | --------- | ----------------- | --------------- | ---------------------------- | --------------------- |
-| 1  | 10017     | β -galactosidase  | (4096,4096)    | 450\*                        | 84                    |
-| 2  | 10081     | Transport Protein | (3710,3838)    | 298.57                       | 300                   |
-| 3  | 10093     | Membrane Protein  | (3838,3710)    | 779.4                        | 295                   |
-| 4  | 10345     | Signaling Protein | (3838,3710)    | 244.68                       | 295                   |
-| 5  | 10532     | Viral Protein     | (4096,4096)    | 191.76                       | 300                   |
-| 6  | 11056     | Transport Protein | (5760,4092)    | 88.94                        | 305                   |
-|    |           | Total Micrographs |                |                              | 1,579                 |
+| SN | EMPIAR ID | Type of Protein      | Micrograph Size | Total Str. Weight (kDa) | Number of Micrographs |
+| -- | --------- | -----------------    | --------------- | ---------------------------- | --------------------- |
+| 1  | 10017     | β -galactosidase     | (4096,4096)    | 450\*                        | 84                    |
+| 2  | 10081     | Transport Protein    | (3710,3838)    | 298.57                       | 300                   |
+| 3  | 10093     | Membrane Protein     | (3838,3710)    | 779.4                        | 295                   |
+| 4  | 10345     | Signaling Protein    | (3838,3710)    | 244.68                       | 295                   |
+| 5  | 10532     | Viral Protein        | (4096,4096)    | 191.76                       | 300                   |
+| 6  | 11056     | Transport Protein    | (5760,4092)    | 88.94                        | 305                   |
+|    |           | Total Micrographs    |                |                              | 1,579                 |
 
 
 ## Rights and Permissions
