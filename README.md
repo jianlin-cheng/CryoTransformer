@@ -3,8 +3,11 @@
 CryoTransformer is a powerful and accurate particle-picking framework using Residual Network (ResNet) and Transformer. CryoTransformer was trained using the largest diverse labelled CryoPPP dataset for the first time. It recognizes and extracts abundance amount of true protein particles from the input micrographs while maintaining low false-positive rates. We performed rigorous evaluation, comparing our method with existing AI based methods and showcasing its robustness through multiple labels of evaluation. Our model outperformed the current state-of-the art methods and is poised to greatly facilitate the automation of Cryo-EM particle recognition.
 
 ---
+#### Comparison of CryoTransformer with existing AI-Based Methods (EMPIAR ID: 10532)
 
-https://github.com/jianlin-cheng/CryoTransformer/assets/24986485/48e02115-329e-4666-a14a-0895c8855d87
+
+https://github.com/jianlin-cheng/CryoTransformer/assets/24986485/857f3bb3-60be-404c-87e9-ba1978d9126a
+
 
 ---
 
