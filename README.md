@@ -16,8 +16,6 @@ https://github.com/jianlin-cheng/CryoTransformer/assets/24986485/857f3bb3-60be-4
 ![Alt text](<visuals/CryoTransformer_detailed_pipeline.jpg>)
 
 
-
-
 ---
 
 
@@ -80,7 +78,7 @@ Optional Arguments:
     --batch_size, type=int, default=8, help='Batch size for training')
     --device, default='cuda:0', help='CUDA device for GPU acceleration')
     --remarks, default='CryoTransformer_github', help='Additional remarks')
-    --data_path, default='/bml/ashwin/ViTPicker/train_val_test_data', help='Path to the training dataset')
+    --data_path, default='CryoTransformer/train_val_test_data', help='Path to the training dataset')
 
 Example Usage:
     python train.py --epochs 300 --batch_size 16  

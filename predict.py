@@ -113,12 +113,12 @@ def get_args_parser():
     # Test hyperparameters
     parser.add_argument('--quartile_threshold', type=float, default=0.25, help='Quartile threshold')
     parser.add_argument('--nms_threshold', type=float, default=0.7, help='Non-maximum suppression threshold')
-    parser.add_argument('--empiar', default='10005', help='EMPIAR ID for prediction')
+    parser.add_argument('--empiar', default='10081', help='EMPIAR ID for prediction')
     parser.add_argument('--remarks', default='CryoTransformer_predictions', help='Additional remarks')
     parser.add_argument('--du_particles', default='N', choices=['Y', 'N'], help='DU Particles (Y or N)')
     parser.add_argument('--num_queries', type=int, default=600, help='Number of queries')
     parser.add_argument('--save_micrographs_with_encircled_proteins', default='Y', choices=['Y', 'N'], help='Plot predicted proteins on Micrographs (Y or N)')
-    parser.add_argument('--resume', default='/bml/ashwin/ViTPicker/particle_picker/model_OBackbone_DETR/output/backboneresnet152_dataset22_updated_Denoised_Datasets_num_queries600_batch16_epoch300_remarksyes_pretrained_weights_timestamp_2023-07-29 17:20:16/checkpoint0299.pth', help='Resume path')
+    parser.add_argument('--resume', default='CryoTransformer/pretrained_model/CryoTransformer_pretrained_model.pth', help='Resume path')
   
 
     parser.add_argument('--lr', default=1e-4, type=float)
@@ -428,8 +428,7 @@ if __name__ == "__main__":
     from datetime import datetime
     current_datetime = datetime.now()
     timestamp = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
-    # data_path = "/bml/Rajan_CryoEM/Processed_Datasets/test_dataset/{}/images".format(args.empiar) #which data to predict: if 300?
-    data_path = "/bml/ashwin/ViTPicker/25_test_mrc_for_cryosparck_load/{}".format(args.empiar) #which data to predict: if 25?
+    data_path = "CryoTransformer/test_data/{}/images".format(args.empiar) #cryoPPP ~300 micrographs
     output_dir = "output/predictions_EMPIAR_{}_DU_{}_predictions_thres{}_nms_thres{}_num_queries{}_remarks_{}_timestamp_{}/".format(
     args.empiar, args.du_particles, args.quartile_threshold, args.nms_threshold, args.num_queries, args.remarks, timestamp)
 

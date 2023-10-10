@@ -32,10 +32,10 @@ def get_args_parser():
     parser.add_argument('--num_queries', type=int, default=600, help='Number of query slots')
     
     # Dataset information
-    parser.add_argument('--data_path', default='/bml/ashwin/ViTPicker/train_val_test_data', help='Path to the training dataset')
+    parser.add_argument('--data_path', default='CryoTransformer/train_val_test_data', help='Path to the training dataset')
     
     # Output and resume paths
-    parser.add_argument('--resume', default='/bml/ashwin/ViTPicker/particle_picker/weights/detr_r101_dc5.pth', help='Path to the pretrained model checkpoint')
+    parser.add_argument('--resume', default='CryoTransformer/pretrained_model/detr_r101_dc5.pth', help='Path to the pretrained model checkpoint')
 
 
     parser.add_argument('--lr', default=1e-4, type=float)
