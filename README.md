@@ -1,11 +1,11 @@
-# CryoTransformer: CryoTransformer: Leveraging Transformer Based Approach for Identifying and Extracting Protein Particles from Cryo-EM Micrographs 
+# CryoTransformer: Leveraging Transformer Based Approach for Identifying and Extracting Protein Particles from Cryo-EM Micrographs 
 
 CryoTransformer is a powerful and accurate particle-picking framework using Residual Network (ResNet) and Transformer. CryoTransformer was trained using the largest diverse labelled CryoPPP dataset for the first time. It recognizes and extracts abundance amount of true protein particles from the input micrographs while maintaining low false-positive rates. We performed rigorous evaluation, comparing our method with existing AI based methods and showcasing its robustness through multiple labels of evaluation. Our model outperformed the current state-of-the art methods and is poised to greatly facilitate the automation of Cryo-EM particle recognition.
 
 ---
 ## Overview of CryoTransformer Pipeliine
 
-![Alt text](<visuals/CryorTransformer_pipeline.jpg>)
+![Alt text](<visuals/CryoTransformer_detailed_pipeline.jpg>)
 
 ## Installation
 
@@ -38,6 +38,18 @@ conda env create -f environment.yml
 conda activate CryoTransformer
 ```
 
+## Prediction
+
+#### Prediction on Test Data 
+This code generates the predicted proteins encircled in Micrographs along with the .box and .star files. 
+```
+python predict.py TODO
+```
+```
+Optional Arguments:
+TODo
+```
+
 
 
 ## Training and Reproducing Results (if required)
@@ -51,17 +63,6 @@ TODO
 
 Example Usage:
     python train.py --TODO
-```
-## Prediction
-
-#### Prediction on Test Data 
-This code generates the predicted proteins encircled in Micrographs along with the .box and .star files. 
-```
-python predict.py TODO
-```
-```
-Optional Arguments:
-TODo
 ```
 
 ## Training Data Statistics
@@ -131,11 +132,11 @@ This article is licensed under a Creative Commons Attribution 4.0 International 
 ## Cite this work
 If you use the code or data associated with this research work or otherwise find this data useful, please cite:
 
-## CryoTransformer
+### CryoTransformer
 TO Update
 
 
-## Dataset
+### CryoPPP Dataset
 If you use the code or data associated with this research work or otherwise find this data useful, please cite: \
 @article {Dhakal2023, \
 	author = {Dhakal, Ashwin and Gyawali, Rajan and Wang, Liguo and Cheng, Jianlin}, \

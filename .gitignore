@@ -9,3 +9,6 @@
 **/predictions/**
 **/wandb/**
 **/output_test/**
+**/pretrained_model/**
+**/test_data/**
+**/train_val_test_data/**
