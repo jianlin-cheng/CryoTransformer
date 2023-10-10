@@ -6,6 +6,9 @@ CryoTransformer is a powerful and accurate particle-picking framework using Resi
 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/pAIVppWwWeI/0.jpg)](http://www.youtube.com/watch?v=pAIVppWwWeI "CryoTransformer")
 
+<iframe width="100%" height="648" src="https://www.youtube.com/embed/pAIVppWwWeI" frameborder="0" allowfullscreen></iframe>
+
+
 
 ![Alt text](<visuals/github_figure.mp4>)
 
