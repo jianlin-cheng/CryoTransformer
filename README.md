@@ -7,6 +7,10 @@ CryoTransformer is a powerful and accurate particle-picking framework using Resi
 
 ![Alt text](<visuals/CryoTransformer_detailed_pipeline.jpg>)
 
+![Alt text](<visuals/github_figure.mp4>)
+
+![Alt text](<visuals/github_figure_720.mp4>)
+
 ## Installation
 
 #### Clone project
@@ -38,9 +42,8 @@ conda env create -f environment.yml
 conda activate CryoTransformer
 ```
 
-## Prediction
+## Prediction on Test Data
 
-#### Prediction on Test Data 
 This code generates the predicted proteins encircled in Micrographs along with the .box and .star files. 
 ```
 python predict.py 
