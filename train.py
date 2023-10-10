@@ -24,10 +24,10 @@ def get_args_parser():
     parser = argparse.ArgumentParser('Set transformer detector', add_help=False)
 
     # Experiment hyperparameters
-    parser.add_argument('--epochs', type=int, default=5, help='Number of training epochs')
+    parser.add_argument('--epochs', type=int, default=300, help='Number of training epochs')
     parser.add_argument('--backbone', default='resnet152', help='Backbone architecture')
     parser.add_argument('--batch_size', type=int, default=8, help='Batch size for training')
-    parser.add_argument('--device', default='cuda:1', help='CUDA device for GPU acceleration')
+    parser.add_argument('--device', default='cuda:0', help='CUDA device for GPU acceleration')
     parser.add_argument('--remarks', default='github_test', help='Additional remarks')
     parser.add_argument('--num_queries', type=int, default=600, help='Number of query slots')
     

@@ -113,11 +113,11 @@ def get_args_parser():
     # Test hyperparameters
     parser.add_argument('--quartile_threshold', type=float, default=0.25, help='Quartile threshold')
     parser.add_argument('--nms_threshold', type=float, default=0.7, help='Non-maximum suppression threshold')
-    parser.add_argument('--empiar', default='10005', help='EMPIAR ID')
-    parser.add_argument('--remarks', default='manuscript_plot', help='Additional remarks')
+    parser.add_argument('--empiar', default='10005', help='EMPIAR ID for prediction')
+    parser.add_argument('--remarks', default='CryoTransformer_predictions', help='Additional remarks')
     parser.add_argument('--du_particles', default='N', choices=['Y', 'N'], help='DU Particles (Y or N)')
     parser.add_argument('--num_queries', type=int, default=600, help='Number of queries')
-    parser.add_argument('--plot_predicted_boxes_yn', default='Y', choices=['Y', 'N'], help='Plot predicted boxes (Y or N)')
+    parser.add_argument('--save_micrographs_with_encircled_proteins', default='Y', choices=['Y', 'N'], help='Plot predicted proteins on Micrographs (Y or N)')
     parser.add_argument('--resume', default='/bml/ashwin/ViTPicker/particle_picker/model_OBackbone_DETR/output/backboneresnet152_dataset22_updated_Denoised_Datasets_num_queries600_batch16_epoch300_remarksyes_pretrained_weights_timestamp_2023-07-29 17:20:16/checkpoint0299.pth', help='Resume path')
   
 
@@ -306,7 +306,7 @@ def infer(images_path, model, postprocessors, device, output_dir):
             print("there are no particle in image")
             continue
 
-        if args.plot_predicted_boxes_yn == 'Y':
+        if args.save_micrographs_with_encircled_proteins == 'Y':
             plot_predicted_boxes(rgb_image, boxes, filename, bounding_box_images_path, h)
 
         # print("=============== Predictions saved ===================")
