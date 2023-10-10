@@ -111,11 +111,11 @@ Data statistics used for independent Testing sourced from EMPIAR repository
 
 | SN | EMPIAR ID | Type of Protein      | Micrograph Size   | Total Str. Weight (kDa) | Number of Micrographs |
 | -- | --------- | -----------------    | ------------ | ---------------------------- | --------------------- |
-| 1  | 10081     | Transport Protein    | (3710, 3838) | 298.57                       | 997                   |
-| 2  | 10532     | Viral Protein        | (4096, 4096) | 191.76                       | 1,556                 |
-| 3  | 10093     | Membrane Protein     | (3838, 3710) | 779.4                        | 1,873                 |
-| 4  | 10345     | Signaling Protein    | (3838, 3710) | 244.68                       | 1,644                 |
-|    |           | Total Micrographs    |              |                              | 6,070                 |
+| 1  | 10081     | Transport Protein    | (3710,3838) | 298.57                       | 997                   |
+| 2  | 10532     | Viral Protein        | (4096,4096) | 191.76                       | 1,556                 |
+| 3  | 10093     | Membrane Protein     | (3838,3710) | 779.4                        | 1,873                 |
+| 4  | 10345     | Signaling Protein    | (3838,3710) | 244.68                       | 1,644                 |
+|    |           | Total Micrographs    |             |                              | 6,070                 |
 
 Data statistics used for independent Testing sourced from CryoPPP dataset (* Theoretical weight)
 
@@ -140,7 +140,7 @@ This article is licensed under a Creative Commons Attribution 4.0 International 
 If you use the code or data associated with this research work or otherwise find this data useful, please cite:
 
 ### CryoTransformer
-TO Update
+To Update once deposited in BioRxiv
 
 
 ### CryoPPP Dataset
