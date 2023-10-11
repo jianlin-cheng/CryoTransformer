@@ -74,7 +74,7 @@ python train.py
 ```
 ```
 Optional Arguments:
-    --epochs, type=int, default=100, help='Number of training epochs')
+    --epochs, type=int, default=300, help='Number of training epochs')
     --batch_size, type=int, default=8, help='Batch size for training')
     --device, default='cuda:0', help='CUDA device for GPU acceleration')
     --remarks, default='CryoTransformer_github', help='Additional remarks')

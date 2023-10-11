@@ -32,10 +32,10 @@ def get_args_parser():
     parser.add_argument('--num_queries', type=int, default=600, help='Number of query slots')
     
     # Dataset information
-    parser.add_argument('--data_path', default='CryoTransformer/train_val_test_data', help='Path to the training dataset')
+    parser.add_argument('--data_path', default='train_val_test_data', help='Path to the training dataset')
     
     # Output and resume paths
-    parser.add_argument('--resume', default='CryoTransformer/pretrained_model/detr_r101_dc5.pth', help='Path to the pretrained model checkpoint')
+    parser.add_argument('--resume', default='pretrained_model/detr_r101_dc5.pth', help='Path to the pretrained model checkpoint')
 
 
     parser.add_argument('--lr', default=1e-4, type=float)
@@ -96,8 +96,6 @@ def get_args_parser():
     parser.add_argument('--coco_panoptic_path', type=str)
     parser.add_argument('--remove_difficult', action='store_true')
 
-    parser.add_argument('--output_dir', default='output_test/',
-                        help='path where to save, empty for no saving')
     parser.add_argument('--seed', default=42, type=int)
     parser.add_argument('--start_epoch', default=0, type=int, metavar='N',
                         help='start epoch')
@@ -112,10 +110,6 @@ def get_args_parser():
 
 
 def main(args):
-    from datetime import datetime
-    current_datetime = datetime.now()
-    timestamp = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
-
     utils.init_distributed_mode(args)
     print("git:\n  {}\n".format(utils.get_sha()))
 
@@ -123,12 +117,6 @@ def main(args):
         assert args.masks, "Frozen training is meant for segmentation only"
     print(args)
 
-    architecture_name = "{} Backbone Architecture: , # Queries: {}, Batchsize: {},  # Epochs: {}, remarks: {}, timestamp: {}".format(
-        args.backbone, args.num_queries, args.batch_size, args.epochs, args.remarks, timestamp
-    )
-
-    # start a new wandb run to track this script
-    wandb.init(name = architecture_name)  #comment for code testing
 
     device = torch.device(args.device)
 
@@ -177,12 +165,12 @@ def main(args):
     data_loader_val = DataLoader(dataset_val, args.batch_size, sampler=sampler_val,
                                  drop_last=False, collate_fn=utils.collate_fn, num_workers=args.num_workers)
 
-
+    base_ds = get_coco_api_from_dataset(dataset_val)
     if args.frozen_weights is not None:
         checkpoint = torch.load(args.frozen_weights, map_location='cpu')
         model_without_ddp.detr.load_state_dict(checkpoint['model'])
 
-    output_dir = Path(args.output_dir)
+    output_path = Path(output_dir)
     if args.resume:
         if args.resume.startswith('https'):
             checkpoint = torch.hub.load_state_dict_from_url(
@@ -202,9 +190,9 @@ def main(args):
 
     if args.eval:
         test_stats, coco_evaluator = evaluate(model, criterion, postprocessors,
-                                              data_loader_val, base_ds, device, args.output_dir)
-        if args.output_dir:
-            utils.save_on_master(coco_evaluator.coco_eval["bbox"].eval, output_dir / "eval.pth")
+                                              data_loader_val, base_ds, device, output_dir)
+        if output_dir:
+            utils.save_on_master(coco_evaluator.coco_eval["bbox"].eval, output_path / "eval.pth")
         return
 
     print("Start training")
@@ -216,11 +204,11 @@ def main(args):
             model, criterion, data_loader_train, optimizer, device, epoch,
             args.clip_max_norm)
         lr_scheduler.step()
-        if args.output_dir:
-            checkpoint_paths = [output_dir / 'checkpoint.pth']
+        if output_dir:
+            checkpoint_paths = [output_path / 'checkpoint.pth']
             # extra checkpoint before LR drop and every 20 epochs
             if (epoch + 1) % args.lr_drop == 0 or (epoch + 1) % 20 == 0:
-                checkpoint_paths.append(output_dir / f'checkpoint{epoch:04}.pth')
+                checkpoint_paths.append(output_path / f'checkpoint{epoch:04}.pth')
             for checkpoint_path in checkpoint_paths:
                 utils.save_on_master({
                     'model': model_without_ddp.state_dict(),
@@ -231,7 +219,7 @@ def main(args):
                 }, checkpoint_path)
 
         test_stats, coco_evaluator = evaluate(
-            model, criterion, postprocessors, data_loader_val, base_ds, device, args.output_dir
+            model, criterion, postprocessors, data_loader_val, base_ds, device, output_dir
         )
 
         log_stats = {**{f'train_{k}': v for k, v in train_stats.items()},
@@ -242,31 +230,44 @@ def main(args):
         wandb.log({f'test_{k}': v for k, v in test_stats.items()})
 
 
-        if args.output_dir and utils.is_main_process():
-            with (output_dir / "log.txt").open("a") as f:
+        if output_dir and utils.is_main_process():
+            with (output_path / "log.txt").open("a") as f:
                 f.write(json.dumps(log_stats) + "\n")
 
             # for evaluation logs
             if coco_evaluator is not None:
-                (output_dir / 'eval').mkdir(exist_ok=True)
+                (output_path / 'eval').mkdir(exist_ok=True)
                 if "bbox" in coco_evaluator.coco_eval:
                     filenames = ['latest.pth']
                     if epoch % 20 == 0:
                         filenames.append(f'{epoch:03}.pth')
                     for name in filenames:
                         torch.save(coco_evaluator.coco_eval["bbox"].eval,
-                                   output_dir / "eval" / name)
+                                   output_path / "eval" / name)
 
-    total_time = time.time() - start_time
-    total_time_str = str(datetime.timedelta(seconds=int(total_time)))
+    def seconds_to_dhms(seconds):
+        days, seconds = divmod(seconds, 86400)  # 86400 seconds in a day
+        hours, seconds = divmod(seconds, 3600)   # 3600 seconds in an hour
+        minutes, seconds = divmod(seconds, 60)    # 60 seconds in a minute
+        return f"{days} days, {hours} hours, {minutes} minutes, {seconds} seconds"
 
+    seconds = time.time() - start_time
+    total_time_str = seconds_to_dhms(seconds)
     print('Training time {}'.format(total_time_str))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('CryoTransformer training and evaluation script', parents=[get_args_parser()])
     args = parser.parse_args()
-    
-    if args.output_dir:
-        Path(args.output_dir).mkdir(parents=True, exist_ok=True)
+    from datetime import datetime
+    current_datetime = datetime.now()
+    timestamp = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    architecture_name = "{} Backbone Architecture: , # Queries: {}, Batchsize: {},  # Epochs: {}, remarks: {}, timestamp: {}".format(
+        args.backbone, args.num_queries, args.batch_size, args.epochs, args.remarks, timestamp)
+    print(architecture_name)
+    output_dir = "output/training/{}".format(architecture_name)
+    # start a new wandb run to track this script
+    wandb.init(name = architecture_name)  #comment for code testing
+
+    Path(output_dir).mkdir(parents=True, exist_ok=True)
     main(args)

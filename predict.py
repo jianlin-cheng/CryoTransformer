@@ -118,7 +118,7 @@ def get_args_parser():
     parser.add_argument('--du_particles', default='N', choices=['Y', 'N'], help='DU Particles (Y or N)')
     parser.add_argument('--num_queries', type=int, default=600, help='Number of queries')
     parser.add_argument('--save_micrographs_with_encircled_proteins', default='Y', choices=['Y', 'N'], help='Plot predicted proteins on Micrographs (Y or N)')
-    parser.add_argument('--resume', default='CryoTransformer/pretrained_model/CryoTransformer_pretrained_model.pth', help='Resume path')
+    parser.add_argument('--resume', default='pretrained_model/CryoTransformer_pretrained_model.pth', help='Resume path')
   
 
     parser.add_argument('--lr', default=1e-4, type=float)
@@ -196,8 +196,8 @@ def infer(images_path, model, postprocessors, device, output_dir):
     model.eval()
     duration = 0
 
-    prefix_file_name = "{}_DU_{}_Qthres{}_NMSthres{}_remarks_{}".format(
-    args.empiar, args.du_particles, args.quartile_threshold, args.nms_threshold, args.remarks
+    prefix_file_name = "EMPIAR_{}_remarks_{}".format(
+    args.empiar, args.remarks
     )
 
     for img_sample in images_path:
@@ -293,10 +293,12 @@ def infer(images_path, model, postprocessors, device, output_dir):
         print(f"----- generating star file for {filename}")
         # create directory for star files if not exist:
         box_file_path = output_dir + '/box_files/'
-        bounding_box_images_path = output_dir + 'predicted_bounding_box_images/'
+        predicted_particles_visualizations_path = output_dir + '/predicted_particles_visualizations/'
         if not os.path.exists(box_file_path):
             os.makedirs(box_file_path)
-        save_individual_box_file(boxes, scores, img_sample, h, box_file_path, "_vitpicker")
+        if not os.path.exists(predicted_particles_visualizations_path):
+            os.makedirs(predicted_particles_visualizations_path)
+        save_individual_box_file(boxes, scores, img_sample, h, box_file_path, "_CryoTransformer")
         # print("=============boxes  ===============================")
         # print(boxes)
         # print("=============scores  ===============================")
@@ -307,7 +309,7 @@ def infer(images_path, model, postprocessors, device, output_dir):
             continue
 
         if args.save_micrographs_with_encircled_proteins == 'Y':
-            plot_predicted_boxes(rgb_image, boxes, filename, bounding_box_images_path, h)
+            plot_predicted_boxes(rgb_image, boxes, filename, predicted_particles_visualizations_path, h)
 
         # print("=============== Predictions saved ===================")
         # cv2.imshow("img", img)
@@ -342,7 +344,7 @@ def save_individual_box_file(boxes, scores, img_file, h, box_file_path, out_imgn
                 # coordinate_shift_rand = 10
                 boxwriter.writerow([os.path.basename(img_file)[:-4] + '.mrc', ((star_bbox[0] + star_bbox[2]) / 2)+coordinate_shift_rand, (h-(star_bbox[1] + star_bbox[3]) / 2)+coordinate_shift_rand, -9999, -9999, scores[i]])
 
-def plot_predicted_boxes(rgb_image, boxes, filename, bounding_box_images_path, h):
+def plot_predicted_boxes(rgb_image, boxes, filename, predicted_particles_visualizations_path, h):
     img = np.array(rgb_image)
     # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
@@ -385,7 +387,7 @@ def plot_predicted_boxes(rgb_image, boxes, filename, bounding_box_images_path, h
         # cv2.polylines(img, [bbox_d], True, (0, 255, 0), 4)
         cv2.circle(img, center, radius, color, thickness)
 
-    img_save_path = os.path.join(output_dir, f"{filename}.jpg")
+    img_save_path = os.path.join(predicted_particles_visualizations_path, f"{filename}.jpg")
 
     cv2.imwrite(img_save_path, img)
 
@@ -393,7 +395,7 @@ def plot_predicted_boxes(rgb_image, boxes, filename, bounding_box_images_path, h
 def save_combined_star_file(box_file_path, prefix_file_name):
     text_files = [file for file in os.listdir(box_file_path) if file.endswith('.box')]
     text_files.sort()
-    output_file = output_dir + prefix_file_name + '_' + 'combined_star_file.star'
+    output_file = output_dir + prefix_file_name + '_' + 'star_file.star'
     header = '''
 data_
 
@@ -428,9 +430,9 @@ if __name__ == "__main__":
     from datetime import datetime
     current_datetime = datetime.now()
     timestamp = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
-    data_path = "CryoTransformer/test_data/{}/images".format(args.empiar) #cryoPPP ~300 micrographs
-    output_dir = "output/predictions_EMPIAR_{}_DU_{}_predictions_thres{}_nms_thres{}_num_queries{}_remarks_{}_timestamp_{}/".format(
-    args.empiar, args.du_particles, args.quartile_threshold, args.nms_threshold, args.num_queries, args.remarks, timestamp)
+    data_path = "test_data/{}/images".format(args.empiar) #cryoPPP ~300 micrographs
+    output_dir = "output/predictions/predictions_EMPIAR_{}_remarks_{}_timestamp_{}/".format(
+    args.empiar, args.remarks, timestamp)
 
 
     Path(output_dir).mkdir(parents=True, exist_ok=True)
