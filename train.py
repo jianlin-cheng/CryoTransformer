@@ -28,7 +28,7 @@ def get_args_parser():
     parser.add_argument('--backbone', default='resnet152', help='Backbone architecture')
     parser.add_argument('--batch_size', type=int, default=8, help='Batch size for training')
     parser.add_argument('--device', default='cuda:0', help='CUDA device for GPU acceleration')
-    parser.add_argument('--remarks', default='github_test', help='Additional remarks')
+    parser.add_argument('--remarks', default='CryoTransformer_github', help='Additional remarks')
     parser.add_argument('--num_queries', type=int, default=600, help='Number of query slots')
     
     # Dataset information
