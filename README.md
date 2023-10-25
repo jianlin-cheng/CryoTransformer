@@ -1,4 +1,4 @@
-# CryoTransformer: Leveraging Transformer Based Approach for Identifying and Extracting Protein Particles from Cryo-EM Micrographs 
+# CryoTransformer: A Transformer Model for Picking Protein Particles from Cryo-EM Micrographs
 
 CryoTransformer is a powerful and accurate particle-picking framework using Residual Network (ResNet) and Transformer. CryoTransformer was trained using the largest diverse labelled CryoPPP dataset for the first time. It recognizes and extracts abundance amount of true protein particles from the input micrographs while maintaining low false-positive rates. We performed rigorous evaluation, comparing our method with existing AI based methods and showcasing its robustness through multiple labels of evaluation. Our model outperformed the current state-of-the art methods and is poised to greatly facilitate the automation of Cryo-EM particle recognition.
 
@@ -58,7 +58,7 @@ python predict.py
 ```
 ```
 Optional Arguments:
-    --save_micrographs_with_encircled_proteins', type=str, default='Y', choices=['Y', 'N'], help='Plot predicted proteins on Micrographs')
+    --save_micrographs_with_encircled_proteins', default='Y', type=str, choices=['Y', 'N'], help='Plot predicted proteins on Micrographs')
     --empiar, default='10081', type=str, help='EMPIAR ID for prediction. It accepts Micrographs in both .mrc or .jpg format')
 
 Example usage: 
@@ -74,11 +74,11 @@ python train.py
 ```
 ```
 Optional Arguments:
-    --epochs, type=int, default=300, help='Number of training epochs')
-    --batch_size, type=int, default=8, help='Batch size for training')
-    --device, default='cuda:0', help='CUDA device for GPU acceleration')
-    --remarks, default='CryoTransformer_github', help='Additional remarks')
-    --data_path, default='CryoTransformer/train_val_test_data', help='Path to the training dataset')
+    --epochs, default=300, type=int, help='Number of training epochs')
+    --batch_size, default=8, type=int, help='Batch size for training')
+    --device, default='cuda:0', type=str, help='CUDA device for GPU acceleration')
+    --remarks, default='CryoTransformer_github', type=str, help='Additional remarks')
+    --data_path, default='CryoTransformer/train_val_test_data', type=str, help='Path to the training dataset')
 
 Example Usage:
     python train.py --epochs 300 --batch_size 16  
@@ -151,11 +151,18 @@ This article is licensed under a Creative Commons Attribution 4.0 International 
 If you use the code or data associated with this research work or otherwise find this data useful, please cite:
 
 ### CryoTransformer
-To Update once deposited in BioRxiv
+@article {Dhakal2023.10.19.563155, \
+	author = {Ashwin Dhakal and Rajan Gyawali and Liguo Wang and Jianlin Cheng}, \
+	title = {CryoTransformer: A Transformer Model for Picking Protein Particles from Cryo-EM Micrographs}, \
+	year = {2023}, \
+	doi = {10.1101/2023.10.19.563155}, \
+	publisher = {Cold Spring Harbor Laboratory}, \
+    journal = {bioRxiv} \
+	URL = { https://www.biorxiv.org/content/10.1101/2023.10.19.563155v1 }
+}
 
 
 ### CryoPPP Dataset
-If you use the code or data associated with this research work or otherwise find this data useful, please cite: \
 @article {Dhakal2023, \
 	author = {Dhakal, Ashwin and Gyawali, Rajan and Wang, Liguo and Cheng, Jianlin}, \
 	title = {A large expert-curated cryo-EM image dataset for machine learning protein particle picking}, \
