@@ -62,7 +62,7 @@ Optional Arguments:
     --empiar, default='10081', type=str, help='EMPIAR ID for prediction. It accepts Micrographs in both .mrc or .jpg format')
 
 Example usage: 
-    python predict.py -- empiar '10081'
+    python predict.py --empiar '10081'
 ```
 
 
@@ -151,14 +151,14 @@ This article is licensed under a Creative Commons Attribution 4.0 International 
 If you use the code or data associated with this research work or otherwise find this data useful, please cite:
 
 ### CryoTransformer
-@article {Dhakal2023.10.19.563155, \
+@article {Dhakal2024, \
 	author = {Ashwin Dhakal and Rajan Gyawali and Liguo Wang and Jianlin Cheng}, \
 	title = {CryoTransformer: A Transformer Model for Picking Protein Particles from Cryo-EM Micrographs}, \
-	year = {2023}, \
-	doi = {10.1101/2023.10.19.563155}, \
-	publisher = {Cold Spring Harbor Laboratory}, \
-    journal = {bioRxiv} \
-	URL = { https://www.biorxiv.org/content/10.1101/2023.10.19.563155v1 }
+	year = {2024}, \
+	doi = {10.1093/bioinformatics/btae109}, \
+	publisher = {Oxford University Press}, \
+    journal = {Bioinformatics} \
+	URL = { https://doi.org/10.1093/bioinformatics/btae109 }
 }
 
 
