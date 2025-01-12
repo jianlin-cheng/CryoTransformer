@@ -1,5 +1,6 @@
 name: CryoTransformer
 channels:
+  - conda-forge
   - defaults
 dependencies:
   - _libgcc_mutex=0.1=main
@@ -69,7 +70,7 @@ dependencies:
   - pycparser=2.21=pyhd3eb1b0_0
   - pygments=2.11.2=pyhd3eb1b0_0
   - pyrsistent=0.18.0=py37heee7806_0
-  - python=3.7.16=h7a1cb2a_0
+  - python=3.7.16
   - python-dateutil=2.8.2=pyhd3eb1b0_0
   - python-fastjsonschema=2.16.2=py37h06a4308_0
   - pyzmq=23.2.0=py37h6a678d5_0
@@ -111,7 +112,7 @@ dependencies:
     - idna==2.8
     - imageio==2.26.0
     - imageio-ffmpeg==0.4.8
-    - install==1.3.5
+#    - install==1.3.5
     - ipython==7.34.0
     - ipywidgets==8.0.4
     - joblib==1.2.0

@@ -46,6 +46,7 @@ rm test_data.tar.gz
 ```
 #### Create conda environment
 ```
+conda remove --name CryoTransformer --all
 conda env create -f environment.yml
 conda activate CryoTransformer
 ```
